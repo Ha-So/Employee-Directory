@@ -36,12 +36,13 @@ createEmployee = (req, res) => {
     });
 };
 
+
 getEmployees = async (req, res) => {
-    await Employee.find({}, (err, trucks) => {
+    await Employee.find({}, (err, employees) => {
       if (err) {
         return res.status(400).json({ success: false, error: err });
       }
-      if (!Employee.length) {
+      if (!employees.length) {
         return res.status(404).json({ success: false, error: `Employee not found` });
       }
       return res.status(200).json({ success: true, data: employees });
@@ -51,6 +52,6 @@ getEmployees = async (req, res) => {
 
 module.exports = {
     createEmployee,
-    getEmployees
+    getEmployees,
   };
   
