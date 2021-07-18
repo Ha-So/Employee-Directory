@@ -37,6 +37,78 @@ createEmployee = (req, res) => {
 };
 
 
+updateEmployee = async (req, res) => {
+    const body = req.body;
+  
+    if (!body) {
+      return res.status(400).json({
+        success: false,
+        error: "You must provide a body to update",
+      });
+    }
+  
+    Employee.findOne({ _id: req.params.id }, (err, employee) => {
+      if (err) {
+        return res.status(404).json({
+          err,
+          message: "Employee not found!",
+        });
+      }
+      employee.fname = body.fname;
+      employee.lname = body.lname;
+      employee.department = body.department;
+      employee.role = body.role;
+      employee.year_joined = body.year_joined;
+      employee.email = body.email;
+      employee.cell = body.cell;
+      employee.state = body.state;
+      employee.photo = body.photo;
+      employee.status = body.status;
+      employee
+        .save()
+        .then(() => {
+          return res.status(200).json({
+            success: true,
+            id: employee._id,
+            message: "Employee updated!",
+          });
+        })
+        .catch((error) => {
+          return res.status(404).json({
+            error,
+            message: "Employee not updated!",
+          });
+        });
+    });
+  };
+
+  deleteEmployee = async (req, res) => {
+    await Employee.findOneAndDelete({ _id: req.params.id }, (err, employee) => {
+      if (err) {
+        return res.status(400).json({ success: false, error: err });
+      }
+  
+      if (!employee) {
+        return res.status(404).json({ success: false, error: `Employee not found` });
+      }
+  
+      return res.status(200).json({ success: true, data: employee });
+    }).catch((err) => console.log(err));
+  };
+  
+  getEmployeeById = async (req, res) => {
+    await Employee.findOne({ _id: req.params.id }, (err, employee) => {
+      if (err) {
+        return res.status(400).json({ success: false, error: err });
+      }
+  
+      if (!employee) {
+        return res.status(404).json({ success: false, error: `Employee not found` });
+      }
+      return res.status(200).json({ success: true, data: employee });
+    }).catch((err) => console.log(err));
+  };
+
 getEmployees = async (req, res) => {
     await Employee.find({}, (err, employees) => {
       if (err) {
@@ -53,5 +125,8 @@ getEmployees = async (req, res) => {
 module.exports = {
     createEmployee,
     getEmployees,
+    updateEmployee,
+    getEmployeeById,
+    deleteEmployee
   };
   
