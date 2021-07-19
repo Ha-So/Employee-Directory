@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-import api, { insertEmployee } from '../api'
+import api from '../api'
 import FileBase64 from 'react-file-base64';
 
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap';
-import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
  
-const actions = [
-  { label: "Add", value: 1 },
-  { label: "Edit", value: 2 },
-  { label: "Delete", value: 3 }
-];
 
 const Title = styled.h1.attrs({
     className: 'h1',

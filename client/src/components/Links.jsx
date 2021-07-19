@@ -26,28 +26,27 @@ class Links extends Component {
                       
                 <Item>
         
-        <Link to="/employees/list" className="nav-link">
-        View All Employees
-        </Link>
-    </Item>
+                <Link to="/employees/list" className="nav-link">
+                View All Employees
+                </Link>
+                </Item>
                 
                 <Item>
+                <Link to="/employees/create" className="nav-link">
+                 Add An Employee
+                </Link>
+                </Item>
+                <Item>
         
-                        <Link to="/employees/create" className="nav-link">
-                        Add An Employee
-                        </Link>
-                    </Item>
-                    <Item>
-        
-        <Link to="/employees/gallery" className="nav-link">
-        Infinite Scroll Gallery
-        </Link>
-    </Item>
-                    <Item>
-                        <Link to="/employees/gallery" className="nav-link">
-                          About This Site
-                        </Link>
-                    </Item>
+                <Link to="/employees/gallery" className="nav-link">
+                Infinite Scroll Gallery
+                </Link>
+                </Item>
+                <Item>
+                <Link to="/employees/gallery" className="nav-link">
+                About This Site
+                </Link>
+                </Item>
                 
                 </List>
                 </Collapse>

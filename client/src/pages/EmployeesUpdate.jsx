@@ -4,7 +4,6 @@ import FileBase64 from 'react-file-base64';
 
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap';
-import Select from 'react-select';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Title = styled.h1.attrs({
