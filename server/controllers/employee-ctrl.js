@@ -134,13 +134,28 @@ getEmployees = async (req, res) => {
       return res.status(200).json({ success: true, data: employees });
     }).catch((err) => console.log(err));
   };
-  
+
+  getEmployeeImages = async (req, res) => {
+    await Employee.find( {photo:1, _id:0}, (err, employees) => {
+      if (err) {
+        return res.status(400).json({ success: false, error: err });
+      }
+      if (!employees.length) {
+        return res.status(404).json({ success: false, error: `Employee not found` });
+      }
+      return res.status(200).json({ success: true, data: employees });
+    }).catch((err) => console.log(err));
+  };
+
+
+
 
 module.exports = {
     createEmployee,
     getEmployees,
     updateEmployee,
     getEmployeeById,
-    deleteEmployee
+    deleteEmployee,
+    getEmployeeImages
   };
   

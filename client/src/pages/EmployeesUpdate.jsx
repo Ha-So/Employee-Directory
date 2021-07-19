@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api from '../api'
+import FileBase64 from 'react-file-base64';
 
 import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap';
@@ -97,6 +98,11 @@ class EmployeesUpdate extends Component {
         const photo = event.target.value
         this.setState({ photo })
     }
+    handleChangeInputBase64(img){
+        this.setState({ photo: String(img.base64) })
+        console.log(img.base64)
+    }
+
 
 
     handleUpdateEmployee = async () => {
@@ -245,12 +251,10 @@ class EmployeesUpdate extends Component {
                 </Col>
                 <Col xs="6"> 
                
-                <InputText
-                    type="text"
-                    value={photo}
-                    placeholder="Photo"
-                    onChange={this.handleChangeInputPhoto}
-                />
+                <Label>Employee Photo</Label>  <br></br>
+                <FileBase64
+                multiple={ false }
+                onDone={ this.handleChangeInputBase64.bind(this)} />
                 </Col>
                 </Row>
                 </Container>

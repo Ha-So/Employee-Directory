@@ -9,6 +9,7 @@ export const getAllEmployees = () => api.get(`/Employees`)
 export const updateEmployeeById = (id, payload) => api.put(`/Employee/${id}`, payload)
 export const deleteEmployeeById = id => api.delete(`/Employee/${id}`)
 export const getEmployeeById = id => api.get(`/Employee/${id}`)
+export const getEmployeeImages = () => api.get(`/employeeimages`)
 
 const apis = {
     insertEmployee,
@@ -16,6 +17,7 @@ const apis = {
     updateEmployeeById,
     deleteEmployeeById,
     getEmployeeById,
+    getEmployeeImages
 }
 
 export default apis
