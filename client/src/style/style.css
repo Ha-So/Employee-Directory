@@ -70,8 +70,8 @@
   grid-auto-rows: minmax(50px, auto);
 
 }
-  .image-item:nth-child(5n){
-    grid-column-end: span 2;
+  .image-item{
+    padding-bottom: 10px;
   }
 
 

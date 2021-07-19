@@ -154,7 +154,7 @@ class EmployeesUpdate extends Component {
        <p>All your employees, easily accessible.</p>
      </div>
             <Wrapper>
-              
+                <br></br>
                 <Title>Update Employee</Title>
                 <Container>
                 <Row>

@@ -19,6 +19,8 @@ const UnsplashImage = ({ar, url, key }) => (
           <img src={image} />
         ))}
 
+
+
       
     </div>
   );
@@ -53,15 +55,15 @@ class Gallery extends Component {
         
         var arrayLength = employees.length;
         var imgstr = [];
-        var imgstr2 = [];
+     
         for (var i = 0; i < arrayLength; i++) {
             if(employees[i]['photo'].startsWith("data"))
             {
                 
                 imgstr.push(employees[i]['photo'])
-                imgstr2.push(<img src={employees[i]['photo']}/>)
+               
             }
-            console.log(imgstr);
+            //console.log(imgstr);
         }
         
      
@@ -71,9 +73,12 @@ class Gallery extends Component {
             <h1>Sesame Street Employee Directory</h1>
             <p>All your employees, easily accessible.</p>
           </div>
+          <div class="sub-header">
+            <p>Work in progress.</p>
+          </div>
             <Wrapper>
             
-            <div className="image-grid" style={{ marginTop: "30px", align:"center" }}>
+            <div className="image-grid" style={{ marginTop: "30px"}}>
                 <UnsplashImage ar={imgstr} />
                 
          
