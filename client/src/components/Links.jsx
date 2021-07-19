@@ -39,12 +39,12 @@ class Links extends Component {
                     </Item>
                     <Item>
         
-        <Link to="/employees/create" className="nav-link">
+        <Link to="/employees/gallery" className="nav-link">
         Infinite Scroll Gallery
         </Link>
     </Item>
                     <Item>
-                        <Link to="/employees/about" className="nav-link">
+                        <Link to="/employees/gallery" className="nav-link">
                           About This Site
                         </Link>
                     </Item>

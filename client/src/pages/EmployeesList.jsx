@@ -159,7 +159,13 @@ class EmployeesList extends Component {
         }
 
         return (
+            <React.Fragment>
+                 <div class="header">
+            <h1>Sesame Street Employee Directory</h1>
+            <p>All your employees, easily accessible.</p>
+          </div>
             <Wrapper>
+               
                 {showTable && (
                     <ReactTable
                         data={employees}
@@ -171,6 +177,7 @@ class EmployeesList extends Component {
                     />
                 )}
             </Wrapper>
+            </React.Fragment>
         )
     }
 }

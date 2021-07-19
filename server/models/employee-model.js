@@ -11,7 +11,7 @@ const Employee = new Schema(
         email: { type: String, required: true },
         cell: { type: String, required: true },
         state: { type: String, required: true },
-        photo: { type: String, required: true },
+        photo: { type: String, required: false },
         status: { type: String, required: true  },
 
     },

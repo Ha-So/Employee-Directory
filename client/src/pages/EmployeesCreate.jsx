@@ -1,7 +1,17 @@
 import React, { Component } from 'react'
-import api from '../api'
+import api, { insertEmployee } from '../api'
+import FileBase64 from 'react-file-base64';
 
 import styled from 'styled-components'
+import { Container, Row, Col } from 'reactstrap';
+import Select from 'react-select';
+import 'bootstrap/dist/css/bootstrap.min.css';
+ 
+const actions = [
+  { label: "Add", value: 1 },
+  { label: "Edit", value: 2 },
+  { label: "Delete", value: 3 }
+];
 
 const Title = styled.h1.attrs({
     className: 'h1',
@@ -26,13 +36,15 @@ const InputText = styled.input.attrs({
 const Button = styled.button.attrs({
     className: `btn btn-primary`,
 })`
-    margin: 15px 15px 15px 5px;
+    margin: 5px 5px 5px 5px;
+    align-content: center;
 `
 
 const CancelButton = styled.a.attrs({
     className: `btn btn-danger`,
 })`
     margin: 15px 15px 15px 5px;
+    align-content: center;
 `
 
 class EmployeesCreate extends Component {
@@ -93,6 +105,10 @@ class EmployeesCreate extends Component {
         const photo = event.target.value
         this.setState({ photo })
     }
+    handleChangeInputBase64(img){
+        this.setState({ photo: String(img.base64) })
+        console.log(img.base64)
+    }
 
    
     handleIncludeEmployee = async () => {
@@ -119,79 +135,123 @@ class EmployeesCreate extends Component {
     render() {
         const { fname, lname, department, role, year_joined, cell, email, status, state, photo} = this.state
         return (
+            <React.Fragment>
+            <div class="header">
+       <h1>Sesame Street Employee Directory</h1>
+       <p>All your employees, easily accessible.</p>
+     </div>
             <Wrapper>
+              
                 <Title>Create Employee</Title>
-
-                <Label>First Name: </Label>
+                <Container>
+                <Row>
+                <Col xs="6">
                 <InputText
                     type="text"
                     value={fname}
+                    placeholder="First Name"
                     onChange={this.handleChangeInputFName}
-                />
-                <Label>Last Name: </Label>
+                /></Col>
+                <Col xs="6"> 
                 <InputText
                     type="text"
                     value={lname}
+                    placeholder="Last Name"
                     onChange={this.handleChangeInputLName}
-                />
-
-                <Label>Department: </Label>
+                /></Col>
+                </Row>
+                <Row>
+                <Col xs="6">
+      
                 <InputText
                     type="text"
                     value={department}
+                    placeholder="Department"
                     onChange={this.handleChangeInputDep}
                 />
-                <Label>Role: </Label>
+                </Col>
+                <Col xs="6"> 
+               
                 <InputText
                     type="text"
                     value={role}
+                    placeholder="Role"
                     onChange={this.handleChangeInputRole}
                 />
-                  <Label>Year Joined: </Label>
+                </Col>
+                </Row>
+                <Row>
+                <Col xs="6">
+                 
+              
                 <InputText
                     type="text"
                     value={year_joined}
+                    placeholder="Year Joined"
                     onChange={this.handleChangeInputYear}
                 />
-                <Label>Cell #: </Label>
+                </Col>
+                <Col xs="6"> 
                 <InputText
                     type="text"
                     value={cell}
+                    placeholder="Cell #"
                     onChange={this.handleChangeInputCell}
                 />
-                  <Label>Email Address: </Label>
+                </Col>
+                </Row>
+                
+
+                <Row>
+                <Col xs="6">
+                 
+              
+ 
                 <InputText
                     type="text"
                     value={email}
+                    placeholder="Email Address"
                     onChange={this.handleChangeInputEmail}
                 />
-                  <Label>Status: </Label>
+                </Col>
+                <Col xs="6"> 
+               
                 <InputText
                     type="text"
                     value={status}
+                    placeholder="Employment Status"
                     onChange={this.handleChangeInputStatus}
                 />
-                       <Label>State: </Label>
+                </Col>
+                </Row>
+
+                <Row>
+                <Col xs="6">
+                 
+            
                 <InputText
                     type="text"
                     value={state}
+                    placeholder="State"
                     onChange={this.handleChangeInputState}
                 />
-                       <Label>Photo: </Label>
-                <InputText
-                    type="text"
-                    value={photo}
-                    onChange={this.handleChangeInputPhoto}
-                />
-
-
-
-
+                </Col>
+                <Col xs="6">
+                    <Label>Employee Photo</Label>  <br></br>
+                <FileBase64
+                multiple={ false }
+                onDone={ this.handleChangeInputBase64.bind(this)} />
+                </Col>
+                </Row>
+             
+                </Container>
               
-
+                
                 <Button onClick={this.handleIncludeEmployee}>Add Employee</Button>
                 <CancelButton href={'/employees/list'}>Cancel</CancelButton>
+                
             </Wrapper>
+            </React.Fragment>
         )
     }
 }
