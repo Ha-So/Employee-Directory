@@ -1,4 +1,11 @@
+/* 
+* Controller for requests to the server. Allows for create, get(s), updates and deletes. 
+* Based off  variables in the Model.
+*/
+
 const Employee = require("../models/employee-model");
+
+// Create
 
 createEmployee = (req, res) => {
   const body = req.body;
@@ -36,6 +43,7 @@ createEmployee = (req, res) => {
     });
 };
 
+// Update
 
 updateEmployee = async (req, res) => {
     const body = req.body;
@@ -82,6 +90,8 @@ updateEmployee = async (req, res) => {
     });
   };
 
+  // Delete
+
   deleteEmployee = async (req, res) => {
     await Employee.findOneAndDelete({ _id: req.params.id }, (err, employee) => {
       if (err) {
@@ -96,6 +106,8 @@ updateEmployee = async (req, res) => {
     }).catch((err) => console.log(err));
   };
   
+
+  // ID get
   getEmployeeById = async (req, res) => {
     await Employee.findOne({ _id: req.params.id }, (err, employee) => {
       if (err) {
@@ -108,6 +120,8 @@ updateEmployee = async (req, res) => {
       return res.status(200).json({ success: true, data: employee });
     }).catch((err) => console.log(err));
   };
+
+  // Get All
 
 getEmployees = async (req, res) => {
     await Employee.find({}, (err, employees) => {

@@ -3,6 +3,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
+// Require dotenv early in process
 const dotenv = require('dotenv')
 const db = require('./db')
 const employeeRouter = require("./routes/employee-router")

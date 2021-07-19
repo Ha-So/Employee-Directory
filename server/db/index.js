@@ -1,11 +1,7 @@
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-/*
-const DB_PASS = process.env.DB_PASS
-const MONGO_URI = process.env.MONGO_URI
-const uri = `mongodb+srv://adminHS:${DB_PASS}@cluster0.tgran.mongodb.net/EmployeeDirectory?retryWrites=true&w=majority`
-*/
 const result = dotenv.config()
+// Ensure the correct .env file is in server/.env with the appropriate URI variable that contains DB name and password
 
 /*
 if (result.error) {
